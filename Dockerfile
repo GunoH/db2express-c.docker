@@ -35,6 +35,7 @@ MAINTAINER Leo Wu <leow@ca.ibm.com>
 
 RUN groupadd db2iadm1 && useradd -G db2iadm1 db2inst1
 
+RUN yum update -y
 # Required packages
 RUN yum install -y \
     vi \
