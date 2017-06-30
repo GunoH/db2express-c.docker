@@ -79,7 +79,7 @@ RUN su - db2inst1 -c "db2start && db2set DB2COMM=TCPIP && db2 UPDATE DBM CFG USI
     && ./db2rfe -f ./db2rfe.cfg
 
 COPY docker-entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh", "-d"]
 
 VOLUME $DB2EXPRESSC_DATADIR
 
