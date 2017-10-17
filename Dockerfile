@@ -49,6 +49,7 @@ RUN yum install -y \
     libstdc++-devel.i686 \
     numactl-libs \
     which \
+    dos2unix \
     && yum clean all
 
 ENV DB2EXPRESSC_DATADIR /home/db2inst1/data
@@ -80,6 +81,7 @@ RUN su - db2inst1 -c "db2start && db2set DB2COMM=TCPIP && db2 UPDATE DBM CFG USI
     && ./db2rfe -f ./db2rfe.cfg
 
 COPY docker-entrypoint.sh /entrypoint.sh
+RUN dos2unix /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh", "-d"]
 
 VOLUME $DB2EXPRESSC_DATADIR
