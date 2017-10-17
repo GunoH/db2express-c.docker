@@ -97,7 +97,14 @@ if [[ $1 = "-d" ]]; then
   log_info "Initializing container"
   start_db2
   log_info "Database db2diag log following"
-  /bin/bash
+  tail -f ~db2inst1/sqllib/db2dump/db2diag.log &
+  export pid=${!}
+  while true
+  do
+    sleep 10000 &
+    export spid=${!}
+    wait $spid
+  done
 else
   exec "$1"
 fi
