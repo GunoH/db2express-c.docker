@@ -27,6 +27,12 @@ FROM centos:7
 
 MAINTAINER Leo Wu <leow@ca.ibm.com>
 
+# Proxy configuration.
+ARG HTTP_PROXY
+ARG NO_PROXY
+ENV http_proxy=$HTTP_PROXY
+ENV no_proxy=$NO_PROXY
+
 ###############################################################
 #
 #               System preparation for DB2
